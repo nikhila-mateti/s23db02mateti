@@ -4,3 +4,12 @@ block content
   h1= title
   p Welcome to Nikhila's #{title}
   button(type="button", class="btn btn-dark") Press Me
+  div(id = "faster") Increase the speed
+script.
+  var mph = 20
+  var change = 1
+  function goFaster(){
+    mph+=change 
+    change += 1
+    document.getElementById('faster').textContent = 'MPH ' + mph + ' with change ' + change;
+  }
