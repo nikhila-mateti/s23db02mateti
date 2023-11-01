@@ -28,6 +28,8 @@ app.use('/books', booksRouter);
 app.use('/board', boardRouter);
 app.use('/choose', chooseRouter);
 
+const selectorRouter = require('./choose');
+app.use('/selector', selectorRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
