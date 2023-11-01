@@ -2,4 +2,8 @@ extends layout
 
 block content
   h1= title
-  
+  - image_names = ["harper_lee.jpg","harry_Potter.jpg","hunger.jpg","jk-rowling.jpg","mockingBird.jpg"]
+  - for (let i = 0; i < 3; i++)
+       - const value = Math.floor(Math.random()*5)
+       - const imageName = image_names[value]
+       img(src='/public/images/harper_lee.jpg', alt=`${imageName}`, height='300', width='300')
