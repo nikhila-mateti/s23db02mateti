@@ -6,11 +6,15 @@ block content
   .container-fluid
     .row
       - const results = [{ title : "To Kill a Mockingbird", author: "Harper Lee", publishedYear: 1960 },{ title: "Harry Potter and the Sorcerer's Stone", author: "J.K. Rowling", publishedYear: 1997 },{ title: "The Hunger Games", author: "Suzanne Collins", publishedYear: 2008 }]
-      each book in results
-        .col-sm-2
+      each book, index in results
+        .col-sm-2(onclick=`buy(${index})`)
           h3 #{book.title}
           p Author: #{book.author}
           p Published Year: #{book.publishedYear}
+  script.
+    function buy(index) {
+      alert(`You purchased item ${index}`);
+    }
 
 
   
