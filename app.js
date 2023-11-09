@@ -54,7 +54,7 @@ async function recreateDB(){
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var booksRouter = require('./routes/books');
+var booksRouter = require('./routes/Fbooks');
 var boardRouter = require('./routes/board');
 var chooseRouter = require('./routes/choose');
 var resourseRouter = require('./routes/resource');

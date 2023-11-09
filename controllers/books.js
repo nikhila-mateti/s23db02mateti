@@ -2,7 +2,7 @@ var book = require('../models/books');
 // List of all Costumes
 exports.book_list = async function (req, res) {
     try {
-        theBo;oks = await book.find();
+        theBooks = await book.find();
         res.send(theBooks);
     }
     catch (err) {
