@@ -1,9 +1,7 @@
 var express = require('express');
+const books_controllers= require('../controllers/books');
 var router = express.Router();
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('books', { title: 'Search Results Books' });
-});
-
+/* GET costumes */
+router.get('/', books_controllers.book_view_all_Page);
 module.exports = router;
+

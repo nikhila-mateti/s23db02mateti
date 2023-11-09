@@ -5,8 +5,8 @@ block content
   p Welcome to Nikhila's #{title}
   .container-fluid
     .row
-      - const results = [{ title : "To Kill a Mockingbird", author: "Harper Lee", publishedYear: 1960 },{ title: "Harry Potter and the Sorcerer's Stone", author: "J.K. Rowling", publishedYear: 1997 },{ title: "The Hunger Games", author: "Suzanne Collins", publishedYear: 2008 }]
-      each book, index in results
+      - const result = results
+      each book, index in result
         .col-sm-2(onclick=`buy(${index})`)
           h3 #{book.title}
           p Author: #{book.author}
