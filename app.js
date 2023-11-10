@@ -1,4 +1,3 @@
-
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -11,8 +10,8 @@ const connectionString = process.env.MONGO_CON;
 const mongoose = require('mongoose');
 
 mongoose.connect(connectionString, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
+  useNewUrlParser: true, // Remove this line (deprecated option)
+  useUnifiedTopology: true, // Remove this line (deprecated option)
 });
 
 //Get the default connection
@@ -26,9 +25,8 @@ var book = require("./models/books");
 
 async function recreateDB(){
   // Delete everything
-  await book.deleteMany();
-  let instance1 = new
-  book({ title : "To Kill a Mockingbird", author: "Harper Lee", publishedYear: 1960});
+  await book.deleteMany({}, { maxTimeMS: 10000 });
+  let instance1 = new book({ title : "To Kill a Mockingbird", author: "Harper Lee", publishedYear: 1960});
   instance1.save().then(doc=>{
   console.log("First object saved")}
   ).catch(err=>{

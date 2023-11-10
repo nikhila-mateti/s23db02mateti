@@ -62,3 +62,15 @@ exports.book_delete = function (req, res) {
 exports.book_update_put = function (req, res) {
     res.send('NOT IMPLEMENTED: Book update PUT' + req.params.id);
 };
+// for a specific Book.
+exports.book_detail = async function(req, res) {
+    console.log("detail" + req.params.id)
+    try {
+    result = await book.findById( req.params.id)
+    res.send(result)
+    } catch (error) {
+    res.status(500)
+    res.send(`{"error": document for id ${req.params.id} not found`);
+    }
+    };
+    
