@@ -10,8 +10,8 @@ const connectionString = process.env.MONGO_CON;
 const mongoose = require('mongoose');
 
 mongoose.connect(connectionString, {
-  useNewUrlParser: true, // Remove this line (deprecated option)
-  useUnifiedTopology: true, // Remove this line (deprecated option)
+  useNewUrlParser: true, 
+  useUnifiedTopology: true
 });
 
 //Get the default connection
@@ -92,8 +92,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-
-  
 
 module.exports = app;

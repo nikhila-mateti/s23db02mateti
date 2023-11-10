@@ -47,22 +47,6 @@ exports.book_create_post = async function(req, res) {
     res.send('NOT IMPLEMENTED: Book list');
 };*/
 // for a specific Book.
-exports.book_detail = function (req, res) {
-    res.send('NOT IMPLEMENTED: Book detail: ' + req.params.id);
-};
-// Handle Book create on POST.
-/*exports.book_create_post = function (req, res) {
-    res.send('NOT IMPLEMENTED: Book create POST');
-};*/
-// Handle Book delete form on DELETE.
-exports.book_delete = function (req, res) {
-    res.send('NOT IMPLEMENTED: Book delete DELETE ' + req.params.id);
-};
-// Handle Book update form on PUT.
-exports.book_update_put = function (req, res) {
-    res.send('NOT IMPLEMENTED: Book update PUT' + req.params.id);
-};
-// for a specific Book.
 exports.book_detail = async function(req, res) {
     console.log("detail" + req.params.id)
     try {
@@ -73,4 +57,33 @@ exports.book_detail = async function(req, res) {
     res.send(`{"error": document for id ${req.params.id} not found`);
     }
     };
+// Handle Book create on POST.
+/*exports.book_create_post = function (req, res) {
+    res.send('NOT IMPLEMENTED: Book create POST');
+};*/
+// Handle Book delete form on DELETE.
+exports.book_delete = function (req, res) {
+    res.send('NOT IMPLEMENTED: Book delete DELETE ' + req.params.id);
+};
+// Handle Book update form on PUT.
+exports.book_update_put = async function(req, res) {
+    console.log(`update on id ${req.params.id} with body
+    ${JSON.stringify(req.body)}`)
+    try {
+    let toUpdate = await book.findById( req.params.id)
+    // Do updates of properties
+    if(req.body.title) toUpdate.title = req.body.title;
+    if(req.body.author) toUpdate.author = req.body.author;
+    if(req.body.publishedYear) toUpdate.publishedYear = req.body.publishedYear;
+    let result = await toUpdate.save();
+    console.log("Sucess " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": ${err}: Update for id ${req.params.id}
+    failed`);
+    }
+    };
+
+
     

@@ -17,6 +17,5 @@ router.put('/books/:id', books_controller.book_update_put);
 router.get('/books/:id', books_controller.book_detail);
 // GET request for list of all Book items.
 router.get('/books', books_controller.book_list);
-// GET request for one costume.
-router.get('/books/:id', books_controller.book_detail);
+
 module.exports = router;
