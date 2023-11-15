@@ -2,7 +2,7 @@ extends layout
 block content
   h1= title
   if (toShow == null)
-    h2(class="instance") No instance to delete
+    h2(class="instance") No instance to update
   else
     - let bookid = toShow._id
     - let booktitle = toShow.booktitle
