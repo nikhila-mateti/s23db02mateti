@@ -1,0 +1,57 @@
+extends layout
+ 
+block content
+  h1= title
+  if (toShow == null)
+    h2(class="instance") No instance to delete
+  else
+    - let bookid = toShow._id
+    - let booktitle = toShow.booktitle
+    - let author = toShow.author
+    - let publishedYear = toShow.publishedYear
+    - let actionid = "/resource/books/" + bookid
+ 
+    script.
+      let actionid = "#{actionid}"
+ 
+    div
+      div.row
+        div(class='bookAttr mr-3') Book ID is:
+        div #{bookid}
+      div.row
+        div(class='bookAttr mr-3') Book title:
+        div #{booktitle}
+      div.row
+        div(class='bookAttr mr-3') Author:
+        div #{author}
+      div.row
+        div(class='bookAttr mr-3') publishedYear:
+        div #{publishedYear}
+      
+ 
+    button(class="btn btn-danger m-2", onclick="deleteOnid()") Delete
+    button(class="btn btn-secondary m-2", onclick="cancel()") Cancel
+ 
+    script.
+      function cancel() {
+        // Go back to the home page for the costume collection
+        window.location.href='/books'
+      }
+ 
+    script.
+      function deleteOnid() {
+        console.log("starting delete");
+        // delete first
+        fetch(actionid, {
+          method: 'DELETE' // Don't need a body for the delete
+        }).then((resp) => {
+          return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+          alert("Delete succeeded");
+          window.location.href='/books';
+          // TODO handle body
+        }).catch((error) => {
+          // TODO handle error
+          alert("Delete failed: " + error);
+        });
+      }

@@ -26,21 +26,21 @@ var book = require("./models/books");
 async function recreateDB(){
   // Delete everything
   await book.deleteMany({}, { maxTimeMS: 10000 });
-  let instance1 = new book({ title : "To Kill a Mockingbird", author: "Harper Lee", publishedYear: 1960});
+  let instance1 = new book({ booktitle : "To Kill a Mockingbird", author: "Harper Lee", publishedYear: 1960});
   instance1.save().then(doc=>{
   console.log("First object saved")}
   ).catch(err=>{
   console.error(err)
   });
   let instance2 = new
-  book({  title: "The Hunger Games", author: "Suzanne Collins", publishedYear: 2008});
+  book({  booktitle: "The Hunger Games", author: "Suzanne Collins", publishedYear: 2008});
   instance2.save().then(doc=>{
   console.log("Second object saved")}
   ).catch(err=>{
   console.error(err)
   });
   let instance3 = new
-  book({ title: "Harry Potter and the Sorcerer's Stone", author: "J.K. Rowling", publishedYear: 1997});
+  book({ booktitle: "Harry Potter and the Sorcerer's Stone", author: "J.K. Rowling", publishedYear: 1997});
   instance3.save().then(doc=>{
   console.log("Third object saved")}
   ).catch(err=>{
@@ -56,6 +56,7 @@ var booksRouter = require('./routes/books');
 var boardRouter = require('./routes/board');
 var chooseRouter = require('./routes/choose');
 var resourseRouter = require('./routes/resource');
+//var detailRouter = require('./routes/book');
 
 
 var app = express();
@@ -76,6 +77,7 @@ app.use('/books', booksRouter);
 app.use('/board', boardRouter);
 app.use('/choose', chooseRouter);
 app.use('/resource',resourseRouter);
+//app.use('/book',detailRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

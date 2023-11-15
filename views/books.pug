@@ -8,7 +8,7 @@ block content
       - const result = results
       each book, index in result
         .col-sm-2(onclick=`buy(${index})`)
-          h3 #{book.title}
+          h3 #{book.booktitle}
           p Author: #{book.author}
           p Published Year: #{book.publishedYear}
   script.
