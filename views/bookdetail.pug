@@ -1,9 +1,8 @@
 extends layout
- 
 block content
   h1= title
   if (toShow == null)
-    h2(class="instance") No instance to show
+    h2(class="instance") No instance to Show
   else
     - let booktitle = toShow.booktitle
     - let author = toShow.author
