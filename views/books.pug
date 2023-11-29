@@ -1,20 +1,24 @@
 extends layout
-
+ 
 block content
-  h1= title
-  p Welcome to Nikhila's #{title}
-  .container-fluid
-    .row
-      - const result = results
-      each book, index in result
-        .col-sm-2(onclick=`buy(${index})`)
-          h3 #{book.booktitle}
-          p Author: #{book.author}
-          p Published Year: #{book.publishedYear}
+  h1=title
+  - let items = results
+  button.btn.btn-primary.ml-1.float-end(onclick=`dispatch("/books/create")`) Create
+  div(class="container-fluid")
+    div(class="row m-1")
+      each item in items
+        - let destination = `/books/update?id=${item._id}`
+        div(class="row-sm-2 m-1") Books #{item.booktitle}(#{item.author}) is #{item.publishedYear}
+        div(class="btn-toolbar")
+          div(class="btn-group me-2")
+            button(class="btn btn-primary ", onclick=`dispatch("${destination}")`) Update
+          div(class="btn-group me-2")
+            button(class="btn btn-success ", onclick=`dispatch("/books/detail?id=${item._id}")`) Detail
+          div(class="btn-group me-2")
+            button(class="btn btn-danger", onclick=`dispatch("/books/delete?id=${item._id}")`) Delete
+ 
   script.
-    function buy(index) {
-      alert(`You purchased item ${index}`);
+    function dispatch(path) {
+      window.location.href = path;
     }
-
-
-  
+ 
